@@ -1,21 +1,46 @@
-# OmniChat
+# OmniChat 🌐💬
 
 OmniChat is an all-in-one chat interface that connects various Large Language Models (LLMs) to provide a seamless user experience. It enables users to easily access and interact with multiple LLMs through a single, unified platform.
 
-## Features
+## 🌟 Features
 
-- Unified interface for accessing multiple LLMs
-- Easy to extend and integrate new LLMs
-- Supports both web-based and command-line interfaces (CLI)
-- Configurable settings and credentials management
-- Modular architecture for easy maintenance and scalability
+* Unified interface for accessing multiple LLMs
+* Easy to extend and integrate new LLMs
+* Supports both web-based and command-line interfaces (CLI)
+* Configurable settings and credentials management
+* Modular architecture for easy maintenance and scalability
 
-## Getting Started
+## 📁 File Structure
+
+```text
+omni-chat/
+│
+├── config/
+│ └── credentials_template.py
+│
+├── core/
+│ ├── __init__.py
+│ ├── chat_engine.py
+│ ├── llm_handler.py
+│ └── utils.py
+│
+├── llm_adapters/
+│ ├── __init__.py
+│ ├── openai_gpt3.py
+│ └── ...
+│
+├── main.py
+├── requirements.txt
+├── LICENSE
+└── README.md
+```
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Python 3.8 or higher
-- Access to the APIs of the desired LLMs (API keys required)
+* Python 3.8 or higher
+* Access to the APIs of the desired LLMs (API keys required)
 
 ### Installation
 
@@ -36,19 +61,19 @@ OmniChat is an all-in-one chat interface that connects various Large Language Mo
 
 ### Usage
 
-To run the web-based interface, execute the following command:
+To run the CLI, execute the following command:
 
 ```text
 python main.py
 ```
 
-## Adding New LLMs
+## ➕ Adding New LLMs
 
 To add a new LLM, follow these steps:
 
-1. Create an adapter in the `llm_adapters` folder that encapsulates the logic required to interact with the LLM's API.
-2. Add the adapter to `__init__.py` so that it can be managed by the core engine.
+Create an adapter in the `llm_adapters` folder that encapsulates the logic required to interact with the LLM's API.
+Add the adapter to `__init__.py` so that it can be managed by the core engine.
 
-## License
+## 📄 License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
