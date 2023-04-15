@@ -32,5 +32,8 @@ def format_conversation_history(conversation_history):
     """
     formatted_history = ''
     for i, message in enumerate(conversation_history):
-        formatted_history += f"{i:03d}. {message['role'].capitalize()}: {message['content']}\n"
+        lines = message['content'].split('\n')
+        formatted_lines = '\n'.join(['\t' + line for line in lines])
+        formatted_history += f"{i+1}. {message['role'].capitalize()}:\n{formatted_lines}\n"
+    formatted_history += '\n'
     return formatted_history

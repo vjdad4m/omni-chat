@@ -29,6 +29,9 @@ omni-chat/
 │ ├── openai_gpt3.py
 │ └── ...
 │
+├── ui/
+│ └── web_app.py
+│
 ├── main.py
 ├── requirements.txt
 ├── LICENSE
@@ -65,6 +68,12 @@ To run the CLI, execute the following command:
 
 ```text
 python main.py
+```
+
+To run the web app, execute the following command:
+
+```text
+python ui/web_app.py
 ```
 
 ## ➕ Adding New LLMs
