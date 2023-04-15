@@ -8,8 +8,10 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from core.chat_engine import ChatEngine
 from core.utils import format_conversation_history
 
+MODELS = ["openai_gpt3", "chatglm_6b"]
+
 # Initialize the ChatEngine with supported LLMs
-chat_engine = ChatEngine(supported_llms=["openai_gpt3"])
+chat_engine = ChatEngine(supported_llms=MODELS)
 
 # Register a user
 user_id = "user"
@@ -31,7 +33,7 @@ iface = gr.Interface(
     fn=chat,
     inputs=[
         gr.inputs.Textbox(label="User Input", lines=3, placeholder="Type your message here..."),
-        gr.inputs.Dropdown(choices=["openai_gpt3"], label="Select Model")
+        gr.inputs.Dropdown(choices=MODELS, label="Select Model")
     ],
     outputs=[
         gr.outputs.Textbox(label="Response"),

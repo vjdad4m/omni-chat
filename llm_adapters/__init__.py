@@ -1,10 +1,12 @@
 from .openai_gpt3 import OpenAIGPT3Adapter
+from .chatglm_6b import ChatGLM6BAdapter
 
 # Add more LLM import as needed
 
 # Registry of available LLM adapters
 LLM_ADAPTERS = {
     'openai_gpt3': OpenAIGPT3Adapter,
+    'chatglm_6b': ChatGLM6BAdapter,
     # Add more LLM adapters to the registry
 }
 
