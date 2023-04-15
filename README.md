@@ -76,6 +76,11 @@ To run the web app, execute the following command:
 python ui/web_app.py
 ```
 
+## 🔧 Supported Models
+
+* [x] [OpenAI GPT-3](https://platform.openai.com/docs/models/gpt-3-5) (in openai_gpt3.py)
+* [x] [ChatGLM](https://github.com/THUDM/ChatGLM-6B) (in chatglm_6b.py)
+
 ## ➕ Adding New LLMs
 
 To add a new LLM, follow these steps:
