@@ -21,4 +21,8 @@ def get_llm_adapter(adapter_name):
     if adapter_class is None:
         raise ValueError(f"Unknown LLM adapter: {adapter_name}")
 
-    return adapter_class()
+    try:
+        return adapter_class()
+    except:
+        # TODO: Log the error
+        return None

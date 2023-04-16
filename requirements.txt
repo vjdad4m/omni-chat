@@ -3,3 +3,7 @@ torch
 transformers
 openai
 gradio
+sentencepiece
+cpm_kernels
+protobuf
+mdtex2html

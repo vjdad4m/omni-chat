@@ -33,7 +33,7 @@ iface = gr.Interface(
     fn=chat,
     inputs=[
         gr.inputs.Textbox(label="User Input", lines=3, placeholder="Type your message here..."),
-        gr.inputs.Dropdown(choices=MODELS, label="Select Model")
+        gr.inputs.Dropdown(choices=chat_engine.llm_handler.supported_llms, label="Select Model")
     ],
     outputs=[
         gr.outputs.Textbox(label="Response"),
