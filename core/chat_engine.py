@@ -40,8 +40,8 @@ class ChatEngine:
             self.conversation_history[user_id],
             llm_name,
         )
-
-        if add_to_history:
+    
+        if response is not None and add_to_history:
             self.conversation_history[user_id].append({'role': 'user', 'content': user_input})
             self.conversation_history[user_id].append({'role': 'system', 'content': response})
 

@@ -3,14 +3,7 @@ from llm_adapters import get_llm_adapter
 class LLMHandler:
     def __init__(self, supported_llms=None):
         self.supported_llms = supported_llms or []
-        self.llm_adapters = {}
-        for llm in self.supported_llms:
-            adapter = get_llm_adapter(llm)
-            if adapter is not None:
-                self.llm_adapters[llm] = adapter
-            else:
-                print(f"LLM {llm} could not be loaded.")
-                self.supported_llms.remove(llm)
+        self._llm_instances = {}
 
     def generate_response(self, prompt, context, llm_name):
         """
@@ -24,9 +17,14 @@ class LLMHandler:
         if llm_name not in self.supported_llms:
             raise ValueError(f"LLM {llm_name} is not supported by this handler.")
         
-        adapter = self.llm_adapters[llm_name]
-        response = adapter.generate_response(prompt, context)
-        return response
+        adapter = self.get_llm_instance(llm_name)
+        if adapter is not None:
+            response = adapter.generate_response(prompt, context)
+            return response
+        else:
+            print(f"Could not load adapter for LLM {llm_name}.")
+            return None
+
     
     def add_llm(self, llm_name):
         """
@@ -37,10 +35,17 @@ class LLMHandler:
         if llm_name in self.supported_llms:
             raise ValueError(f"LLM {llm_name} is already supported by this handler.")
         
-        adapter = get_llm_adapter(llm_name)
+        self.supported_llms.append(llm_name)
+        
+    def get_llm_instance(self, llm_name):
+        if llm_name not in self.supported_llms:
+            raise ValueError(f"LLM {llm_name} is not supported by this handler.")
+        
+        if llm_name not in self._llm_instances:
+            llm_adapter = get_llm_adapter(llm_name)
+            if llm_adapter is not None:
+                self._llm_instances[llm_name] = llm_adapter
+            else:
+                return None
 
-        if adapter is not None:
-            self.llm_adapters[llm_name] = adapter
-            self.supported_llms.append(llm_name)
-        else:
-            print(f"LLM {llm_name} could not be loaded.")
+        return self._llm_instances[llm_name]
